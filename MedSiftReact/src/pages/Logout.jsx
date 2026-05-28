@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { notify } from "../utils/notify";
 
 
 function Logout({ navigate, setUserId }) {
@@ -9,6 +10,7 @@ function Logout({ navigate, setUserId }) {
       window.localStorage.removeItem("token");
       window.localStorage.removeItem("username");
       setUserId("");
+      notify.success("You've been signed out.");
       navigate("/login");
     };
 

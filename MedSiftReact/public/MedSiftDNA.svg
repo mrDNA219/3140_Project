@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 80">
+  <defs>
+    <!-- Strand A: teal → indigo → purple (left at top, right at bottom) -->
+    <linearGradient id="sa" gradientUnits="userSpaceOnUse" x1="8" y1="4" x2="48" y2="76">
+      <stop offset="0%"   stop-color="#00BCD4"/>
+      <stop offset="50%"  stop-color="#3F51B5"/>
+      <stop offset="100%" stop-color="#9C27B0"/>
+    </linearGradient>
+    <!-- Strand B: pink → purple → indigo (right at top, left at bottom) -->
+    <linearGradient id="sb" gradientUnits="userSpaceOnUse" x1="48" y1="4" x2="8" y2="76">
+      <stop offset="0%"   stop-color="#E91E63"/>
+      <stop offset="50%"  stop-color="#9C27B0"/>
+      <stop offset="100%" stop-color="#3F51B5"/>
+    </linearGradient>
+    <!-- Top rungs: teal → pink -->
+    <linearGradient id="rt" gradientUnits="userSpaceOnUse" x1="6" y1="0" x2="50" y2="0">
+      <stop offset="0%"   stop-color="#00BCD4"/>
+      <stop offset="100%" stop-color="#E91E63"/>
+    </linearGradient>
+    <!-- Bottom rungs: indigo → purple -->
+    <linearGradient id="rb" gradientUnits="userSpaceOnUse" x1="6" y1="0" x2="50" y2="0">
+      <stop offset="0%"   stop-color="#3F51B5"/>
+      <stop offset="100%" stop-color="#9C27B0"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    Two S-curves that cross at the center (y=40):
+    Strand A: upper-left → center → lower-right
+    Strand B: upper-right → center → lower-left
+  -->
+
+  <!-- Strand A -->
+  <path d="M 8,4 C 4,4 4,38 28,40 C 52,42 52,76 48,76"
+        fill="none" stroke="url(#sa)" stroke-width="5.5" stroke-linecap="round"/>
+
+  <!-- Strand B -->
+  <path d="M 48,4 C 52,4 52,38 28,40 C 4,42 4,76 8,76"
+        fill="none" stroke="url(#sb)" stroke-width="5.5" stroke-linecap="round"/>
+
+  <!-- Top rungs — widest at top, narrowing toward the cross -->
+  <line x1="6"  y1="8"  x2="50" y2="8"  stroke="url(#rt)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="8"  y1="21" x2="49" y2="21" stroke="url(#rt)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="16" y1="35" x2="40" y2="35" stroke="url(#rt)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Bottom rungs — narrow near the cross, widening toward the bottom -->
+  <line x1="16" y1="45" x2="40" y2="45" stroke="url(#rb)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="8"  y1="59" x2="49" y2="59" stroke="url(#rb)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="6"  y1="72" x2="50" y2="72" stroke="url(#rb)" stroke-width="3" stroke-linecap="round"/>
+</svg>

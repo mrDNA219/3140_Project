@@ -29,14 +29,9 @@ form {
 
 /* ____________________________________________________________________________ */
 body {
-  /* background-image: url(https://images.pexels.com/photos/3683041/pexels-photo-3683041.jpeg);
-  background-repeat: repeat; */
-  /* background: var(--gradient); */
   background-size: 100%;
-  padding: 0d;
+  padding: 0;
   margin: 0;
-  display: flex;
-  place-items: center;
   min-height: 100vh;
   min-width: 80vw;
   box-sizing: border-box;

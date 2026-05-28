@@ -1,45 +1,39 @@
 import { useState } from 'react';
 import { createNote } from '../api/index';
-import { ToastContainer, toast } from 'react-toastify';
-
+import { notify } from '../utils/notify';
 
 function NoteCreator({userId, getNotesHelper, token}) {
 
-    const [newNote, setNewNote] = useState({
-        text: "",
-        author: ""
-    });
+    const [newNote, setNewNote] = useState({ text: '', author: '' });
 
     async function createNoteHelper() {
-        console.log("token near note creator: ", token);
-      const result = await createNote(token, newNote);
-      if(result){
-         toast("Note successfully created!");
-         getNotesHelper();
-      } else {
-        alert(`${result.message}`);
-      }  
+        if (!token || !userId) {
+            notify.warn('You must be logged in to create a note.');
+            return;
+        }
+        const result = await createNote(token, newNote);
+        if (result && !result.message) {
+            notify.success('Note created successfully!');
+            getNotesHelper();
+        } else {
+            notify.error(result?.message || 'Failed to create note.');
+        }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         createNoteHelper();
-    }
+    };
 
     return (
-        <>
-        <ToastContainer />
         <div className='main-content'>
             <h1>Note Creator</h1>
-            <form onSubmit={handleSubmit} >
-                <textarea type="text" placeholder='Start typing...' value={newNote.text} onChange={(e) => setNewNote({ text: e.target.value, author: userId})} />
+            <form onSubmit={handleSubmit}>
+                <textarea type="text" placeholder='Start typing...' value={newNote.text} onChange={(e) => setNewNote({ text: e.target.value, author: userId })} />
                 <button className="header1 outline" type="submit">Create Note</button>
             </form>
-        </div>        
-        </>
-        
-    )
+        </div>
+    );
 }
-
 
 export default NoteCreator;

@@ -23,7 +23,7 @@ server.use('/api', indexRouter);
 server.use(express.static(path.join(__dirname, '../dist')));
 
 // Catch-all so React Router handles client-side navigation
-server.get('*', (req, res) => {
+server.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 

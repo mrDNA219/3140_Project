@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router'
 import './App.css'
+import { ToastContainer } from 'react-toastify';
 import { Journals, JournalSummaries, Home, Notes, Dashboard, About, Register, Login, Logout} from "./pages";
 import { Navigation } from "./components"
 
@@ -41,7 +42,8 @@ function App() {
   }, [token]);
   
   return (
-    <> 
+    <>
+    <ToastContainer position="top-right" autoClose={4000} />
     <Navigation navigate={navigate} userId={userId} token={token}/>
     <div className='main-content'>
       <Routes>

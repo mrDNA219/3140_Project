@@ -36,21 +36,31 @@ const fetchPapersHelper = async (e) => {
     }
 };
 
-    return ( 
+    return (
         <>
-        <h1>Search Full Medical Journals</h1>
-        <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={fetchPapersHelper}>
-            <input style={{margin: '1rem'}}name='formInput' type="text" value={journalSearch} placeholder='enter search query' onChange={(e) => setJournalSearch(e.target.value)}></input>
-            <button type="submit" className="header1 outline">Search</button>
-        </form>
-        {
-            journals.length ? journals.map((journal) => {
-                return (
-                    <FullNoteCreator key={Math.floor(Math.random() * (100000000 - 0 + 1))} token={token} journal={journal} userId={userId}></FullNoteCreator>
-                );
-            }) : <div className="card">
-                <p className="white-text outline">Please input a search query to view NCBI journals</p>
+        <div className="page-hero">
+            <div className="page-hero-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <line x1="10" y1="9" x2="8" y2="9"/>
+                </svg>
             </div>
+            <h1>Article Reader</h1>
+            <p className="page-hero-subtitle">Browse complete PubMed articles and annotate as you go</p>
+            <form onSubmit={fetchPapersHelper} style={{width: '100%'}}>
+                <div className="search-wrapper">
+                    <input name='formInput' type="text" value={journalSearch} placeholder='enter search query' onChange={(e) => setJournalSearch(e.target.value)} />
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        {
+            journals.length ? journals.map((journal) => (
+                <FullNoteCreator key={Math.floor(Math.random() * (100000000 - 0 + 1))} token={token} journal={journal} userId={userId} />
+            )) : null
         }
         </>
     );
